@@ -1,0 +1,132 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+
+public class Main
+{
+	public static void main(String[] args) {
+	    int count=1;
+		LinkedList list=new LinkedList();
+		list.inserAtBeg(1);
+		list.inserAtBeg(2);
+		list.inserAtBeg(3);
+		list.inserAtBeg(4);
+		list.inserAtBeg(5);
+// 		list.inserAtBeg(6);
+	    
+// 		list.swapPairs();
+        
+        list.reverseKgroup();
+		list.display();
+		
+		
+	}
+}
+class LinkedList{
+    Node head;
+    class Node{
+        int data;
+        Node next;
+        Node(int val){
+            data=val;
+            next=null;
+            
+    }
+    }
+    
+    
+    public void reverseKgroup(){
+        int k=3,len=0,n=k;
+        Node tem=head,next=null,prev=null,current=;
+        while(tem!=null){
+            len++;
+            tem=tem.next;
+        }
+        System.out.println(len);
+        tem=head;
+        while(current!=null){
+           next=current.next;
+           current.next=prev;
+           prev=current;
+           current=next;
+           
+           
+        }
+        head=prev;
+        
+        // while(tem.next!=null && tem.next.next!=null && n>=0){
+        //     if(n==3){
+        //         len-=k;
+        //         if(len<0) return;
+        //     }
+        //     prev=tem;
+        //     next=tem.next;
+        //     current=next.next;
+            
+        //     System.out.println("  "+next.data +" "+ current.data);
+            
+        //     --k;
+        //     break;
+        // }
+    }
+    
+    
+    
+    
+    
+    public void swapPairs(){
+        Node tem=head,next=null,prev=null,current=null;
+        if(tem==null || tem.next==null) return;
+        tem=head.next.next;
+        next=head;
+        head=head.next;
+        head.next=next;
+        next.next=tem;
+        tem=next;
+        
+     
+        System.out.println(tem.data);
+        while(tem.next!=null && tem.next.next!=null){
+            prev=tem.next;
+            next=prev.next;
+            current=next.next;
+            System.out.println("  "+prev.data+"  "+next.data +" "+ current);
+            tem.next=next;
+            tem.next.next=prev;
+            prev.next=current;
+            
+             
+            tem=tem.next.next;
+           
+          
+        }
+        
+        
+       
+    }
+    
+    public void inserAtBeg(int val){
+        Node newnode=new Node(val);
+        if(head==null){
+            head=newnode;
+            return;
+            
+        }else{
+            newnode.next=head;
+            head=newnode;
+        }
+       
+    }
+    public void display(){
+        while(head!=null){
+           System.out.print(head.data+" ");
+            head=head.next;
+        }
+        
+    }
+    
+}
