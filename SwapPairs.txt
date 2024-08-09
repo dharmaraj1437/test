@@ -17,7 +17,7 @@ public class Main
 		list.inserAtBeg(4);
 		list.inserAtBeg(5);
 // 		list.inserAtBeg(6);
-	    
+	       list.inserAtBeg(1437);
  		list.swapPairs();
         
         list.reverseKgroup();
